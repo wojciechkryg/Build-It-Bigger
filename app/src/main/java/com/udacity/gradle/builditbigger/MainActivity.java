@@ -1,14 +1,13 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.wojdor.jokeactivity.JokeActivity;
-import com.wojdor.jokes.Jokes;
+import java.lang.ref.WeakReference;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,9 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showJoke(View view) {
-        String joke = new Jokes().getRandomJoke();
-        Intent intent = new Intent(this, JokeActivity.class);
-        intent.putExtra(JokeActivity.JOKE_EXTRA, joke);
-        startActivity(intent);
+        WeakReference<Context> weakContext = new WeakReference<>(getApplicationContext());
+        new JokeProvider(weakContext).execute();
     }
 }
