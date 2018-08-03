@@ -6,20 +6,20 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.google.cloud.tools:endpoints-framework-gradle-plugin:1.0.2'
+        classpath "com.google.cloud.tools:endpoints-framework-gradle-plugin:$endpoints_framework_version"
     }
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion build_tools_version
 
     defaultConfig {
-        applicationId "com.udacity.gradle.builditbigger"
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        applicationId application_id
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode version_code
+        versionName version_name
         multiDexEnabled true
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -31,22 +31,28 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        free {
+            applicationIdSuffix application_id_free_sufix
+        }
+        paid {
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     endpointsServer project(path: ':backend', configuration: 'endpoints')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.google.android.gms:play-services-ads:11.8.0'
-    implementation 'com.google.api-client:google-api-client:1.23.0'
-    implementation 'com.google.http-client:google-http-client-android:1.23.0'
-    implementation 'com.google.code.findbugs:jsr305:3.0.1'
+    implementation "com.android.support:appcompat-v7:$android_support_version"
+    freeCompile "com.google.android.gms:play-services-ads:$play_services_ads_version"
+    implementation "com.google.api-client:google-api-client:$google_api_client_version"
+    implementation "com.google.http-client:google-http-client-android:$google_api_client_version"
+    implementation "com.google.code.findbugs:$findbugs_version"
 
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-
-    testImplementation 'junit:junit:4.12'
-    compile project(path: ':jokes')
+    testImplementation "junit:junit:$junit_version"
+    compile project(path: ':jokelibrary')
     compile project(path: ':jokeactivity')
 }
