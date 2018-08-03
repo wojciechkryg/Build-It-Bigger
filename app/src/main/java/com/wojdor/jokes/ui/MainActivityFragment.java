@@ -2,6 +2,7 @@ package com.wojdor.jokes.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,8 +25,8 @@ public class MainActivityFragment extends Fragment {
     }
 
     private void initJokeBtn(View root) {
-        Button jokeBtn = root.findViewById(R.id.fragment_main_joke_btn);
-        jokeBtn.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton jokeFab = root.findViewById(R.id.fragment_main_joke_fab);
+        jokeFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showJoke();

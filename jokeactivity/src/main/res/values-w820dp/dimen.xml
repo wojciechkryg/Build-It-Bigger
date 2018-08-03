@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="activity_joke_joke_tv_padding">64dp</dimen>
+    <dimen name="activity_joke_joke_tv_size">48sp</dimen>
+</resources>
