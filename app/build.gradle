@@ -48,12 +48,12 @@ dependencies {
     endpointsServer project(path: ':backend', configuration: 'endpoints')
     implementation "com.android.support:appcompat-v7:$android_support_version"
     implementation "com.android.support:design:$android_support_version"
-    freeCompile "com.google.android.gms:play-services-ads:$play_services_ads_version"
+    freeImplementation "com.google.android.gms:play-services-ads:$play_services_ads_version"
     implementation "com.google.api-client:google-api-client:$google_api_client_version"
     implementation "com.google.http-client:google-http-client-android:$google_api_client_version"
     implementation "com.google.code.findbugs:$findbugs_version"
 
     testImplementation "junit:junit:$junit_version"
-    compile project(path: ':jokelibrary')
-    compile project(path: ':jokeactivity')
+    implementation project(path: ':jokelibrary')
+    implementation project(path: ':jokeactivity')
 }
